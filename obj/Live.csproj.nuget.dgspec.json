@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "X:\\SOnoixDEV\\Fausto\\Material_de estudo\\Back-end\\Live\\Live.csproj": {}
+    "F:\\Git_Study\\Live_IN\\Live.csproj": {}
   },
   "projects": {
-    "X:\\SOnoixDEV\\Fausto\\Material_de estudo\\Back-end\\Live\\Live.csproj": {
+    "F:\\Git_Study\\Live_IN\\Live.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "X:\\SOnoixDEV\\Fausto\\Material_de estudo\\Back-end\\Live\\Live.csproj",
+        "projectUniqueName": "F:\\Git_Study\\Live_IN\\Live.csproj",
         "projectName": "Live",
-        "projectPath": "X:\\SOnoixDEV\\Fausto\\Material_de estudo\\Back-end\\Live\\Live.csproj",
-        "packagesPath": "C:\\Users\\aluno\\.nuget\\packages\\",
-        "outputPath": "X:\\SOnoixDEV\\Fausto\\Material_de estudo\\Back-end\\Live\\obj\\",
+        "projectPath": "F:\\Git_Study\\Live_IN\\Live.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "F:\\Git_Study\\Live_IN\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\aluno\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -43,7 +45,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -52,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

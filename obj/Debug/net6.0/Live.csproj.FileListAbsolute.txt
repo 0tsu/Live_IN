@@ -28,3 +28,18 @@ X:\SOnoixDEV\Fausto\Material_de estudo\Back-end\Live\obj\Debug\net6.0\ref\Live.d
 \\10.0.0.3\Alunos2\SOnoixDEV\Fausto\Material_de estudo\Back-end\Live\obj\Debug\net6.0\Live.pdb
 \\10.0.0.3\Alunos2\SOnoixDEV\Fausto\Material_de estudo\Back-end\Live\obj\Debug\net6.0\Live.genruntimeconfig.cache
 \\10.0.0.3\Alunos2\SOnoixDEV\Fausto\Material_de estudo\Back-end\Live\obj\Debug\net6.0\ref\Live.dll
+F:\Git_Study\Live_IN\bin\Debug\net6.0\Live.exe
+F:\Git_Study\Live_IN\bin\Debug\net6.0\Live.deps.json
+F:\Git_Study\Live_IN\bin\Debug\net6.0\Live.runtimeconfig.json
+F:\Git_Study\Live_IN\bin\Debug\net6.0\Live.dll
+F:\Git_Study\Live_IN\bin\Debug\net6.0\Live.pdb
+F:\Git_Study\Live_IN\obj\Debug\net6.0\Live.csproj.AssemblyReference.cache
+F:\Git_Study\Live_IN\obj\Debug\net6.0\Live.GeneratedMSBuildEditorConfig.editorconfig
+F:\Git_Study\Live_IN\obj\Debug\net6.0\Live.AssemblyInfoInputs.cache
+F:\Git_Study\Live_IN\obj\Debug\net6.0\Live.AssemblyInfo.cs
+F:\Git_Study\Live_IN\obj\Debug\net6.0\Live.csproj.CoreCompileInputs.cache
+F:\Git_Study\Live_IN\obj\Debug\net6.0\Live.dll
+F:\Git_Study\Live_IN\obj\Debug\net6.0\refint\Live.dll
+F:\Git_Study\Live_IN\obj\Debug\net6.0\Live.pdb
+F:\Git_Study\Live_IN\obj\Debug\net6.0\Live.genruntimeconfig.cache
+F:\Git_Study\Live_IN\obj\Debug\net6.0\ref\Live.dll

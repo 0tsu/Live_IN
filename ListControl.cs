@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 public class ListControl
 {      
     int day,hours,minutes;
     string format = "dddd HH:mm";
-    List<KeyValuePair<string,string>> timeLine = new List<KeyValuePair<string,string>>();
+    
+    List<KeyValuePair<DateTime,string>> timeLine = new List<KeyValuePair<DateTime,string>>();
 
     public void InfoList()
     {
@@ -48,10 +50,9 @@ public class ListControl
 
         var date = new DateTime();
         DateTime times = new DateTime(date.Year, date.Month, day, hours, minutes, date.Second);
-
-        timeLine.Add(new KeyValuePair<string, string>(times.ToString(format), informations));
+    
+        timeLine.Add(new KeyValuePair<DateTime, string>(times, informations));
         timeLine = timeLine.OrderBy(item => item.Key).ToList();
-        
         Console.WriteLine("HORARIO SALVO!!!");
     }
 
@@ -62,7 +63,7 @@ public class ListControl
         Console.WriteLine("Cronograma - informação do cronograma");
         foreach(var item in timeLine)
         {
-            Console.WriteLine($"{timeLineIndex++} - {item.Key} - {item.Value}");
+            Console.WriteLine($"{timeLineIndex++} - {item.Key.ToString(format)} - {item.Value}");
         }
         Console.ReadKey();
     }
@@ -72,6 +73,13 @@ public class ListControl
         ViewList();
         Console.WriteLine("Qual você deseja remover?");
         int removeComponetByList = int.Parse(Console.ReadLine()?? "");
-        timeLine.RemoveAt(removeComponetByList);
+
+        if (removeComponetByList >= 0 && removeComponetByList < timeLine.Count){
+            timeLine.RemoveAt(removeComponetByList);
+            Console.WriteLine("HORARIO REMOVIDO");
+        }
+        else{
+            Console.WriteLine("Valor invalido no cronograma");
+        }
     }
 }
