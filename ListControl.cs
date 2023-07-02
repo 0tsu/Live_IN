@@ -1,85 +1,85 @@
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-
 public class ListControl
-{      
-    int day,hours,minutes;
-    string format = "dddd HH:mm";
-    
-    List<KeyValuePair<DateTime,string>> timeLine = new List<KeyValuePair<DateTime,string>>();
+{
+    List<KeyValuePair<DateTime, string>> timeLineList = new List<KeyValuePair<DateTime, string>>();
 
-    public void InfoList()
+    public void AddList(int day, int hour, int minutes, string informations)
     {
-        Console.WriteLine("Me informe o dia da semana que você deseja marcar");
-        Console.WriteLine("Sendo 1 = Segunda e 7 = Domingo");
-        while(true)
-                    {
-                        day = int.Parse(Console.ReadLine() ?? "1");
-                        if(day > 0 && day <= 7 ) break;
-                        else Console.WriteLine("valor invalido digite um valor entre 1 e 7");
-                    }
-
-        Console.WriteLine("Me informe a hora que você quer marcar");
-
-        while(true)
-        {
-            hours = int.Parse(Console.ReadLine() ?? "0");
-            if(hours >= 0 && hours < 24)   break;
-            else    Console.WriteLine("valor invalido, digite um valor entre 0 a 23");
-        }
-        
-        Console.WriteLine("Agora me informe os minutos");
-
-        while(true)
-        {
-            minutes = int.Parse(Console.ReadLine() ?? "0");
-            if(minutes>=0 && minutes<60)    break;
-            else    Console.WriteLine("Valor invalido, digite um valor entre 0 a 59");
-        }
-
-        Console.WriteLine("Caso tenha alguma informação sobre o horario favor digitar aqui");
-        string informations = Console.ReadLine() ?? "#";
-
-        CreateList(day, hours, minutes, informations);
-    }
-
-    public void CreateList(int day, int hours, int minutes, string? informations)
-    {
-        Console.Clear();
-
         var date = new DateTime();
-        DateTime times = new DateTime(date.Year, date.Month, day, hours, minutes, date.Second);
-    
-        timeLine.Add(new KeyValuePair<DateTime, string>(times, informations));
-        timeLine = timeLine.OrderBy(item => item.Key).ToList();
-        Console.WriteLine("HORARIO SALVO!!!");
+        DateTime timeLine = new DateTime(date.Year, date.Month, day, hour, minutes, date.Second);
+        timeLineList.Add(new KeyValuePair<DateTime, string>(timeLine, informations));
+        timeLineList = timeLineList.OrderBy(item => item.Key).ToList();
+        Console.Clear();
+        Console.WriteLine("Adicionado A lista");
+        
     }
-
     public void ViewList()
     {
-        Console.Clear();
-        int timeLineIndex = 0;
-        Console.WriteLine("Cronograma - informação do cronograma");
-        foreach(var item in timeLine)
+        int IndexList = 0;
+
+        if(NoElementsInList())
         {
-            Console.WriteLine($"{timeLineIndex++} - {item.Key.ToString(format)} - {item.Value}");
+            Console.WriteLine("Sua lista não possui horarios");
+            return;
+        }
+
+        Console.WriteLine("=============================");
+        Console.WriteLine("I - Horarios  ||  Informações");
+        Console.WriteLine("=============================");
+        foreach(var item in timeLineList)
+        {
+            Console.WriteLine($"{IndexList++} - {item.Key.ToString("ddd HH:mm")} || {item.Value}");
         }
         Console.ReadKey();
     }
-
-    public void RemoveList()
+    public void RemoveList(int removeByIndex)
     {
-        ViewList();
-        Console.WriteLine("Qual você deseja remover?");
-        int removeComponetByList = int.Parse(Console.ReadLine()?? "");
+        if(removeByIndex < 0 || removeByIndex >= timeLineList.Count)
+        {
+            Console.WriteLine("Indice não encontrato");
+            return;
+        }
+        timeLineList.RemoveAt(removeByIndex);
+        Console.Clear();
+        Console.WriteLine("Horario removido da lista");
+    }
+    public void UpdateList(int updateByIndex)
+    {
+        int newDay, newHour,  newMinutes;
+        string newInformations;
 
-        if (removeComponetByList >= 0 && removeComponetByList < timeLine.Count){
-            timeLine.RemoveAt(removeComponetByList);
-            Console.WriteLine("HORARIO REMOVIDO");
+        if(updateByIndex < 0 || updateByIndex >= timeLineList.Count)
+        {
+            Console.WriteLine("Indice não encontrato");
+            return;
         }
-        else{
-            Console.WriteLine("Valor invalido no cronograma");
-        }
+        
+        do{
+            Console.WriteLine("Digite o novo dia 1 = segunda, 7 = domingo");
+            newDay = int.Parse(Console.ReadLine()??"");
+        }while(newDay < 0 || newDay >= 7 );
+
+        do{
+            Console.WriteLine("Digite as horas");
+            newHour = int.Parse(Console.ReadLine()??"");
+        }while(newHour < 0 || newHour >= 24);
+
+        do{
+            Console.WriteLine("Digite os minutos");
+            newMinutes = int.Parse(Console.ReadLine()??"");
+        }while(newMinutes < 0 || newMinutes >= 60);
+
+        Console.WriteLine("Digite uma nova informação");
+        Console.WriteLine("Caso contrario pode so apertar enter");
+        newInformations = Console.ReadLine()??"";
+
+        var newDate = new DateTime();
+        DateTime newTimeLine = new DateTime(newDate.Year, newDate.Month, newDay, newHour, newMinutes, newDate.Second);
+        timeLineList[updateByIndex] = new KeyValuePair<DateTime, string>(newTimeLine, newInformations);
+        Console.Clear();
+        Console.WriteLine("Lista atualizada");
+    }
+    public bool NoElementsInList()
+    {
+        return timeLineList.Count == 0;
     }
 }

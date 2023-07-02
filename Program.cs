@@ -6,7 +6,7 @@ public class program
 {
     static void Main()
     {
-        Menu menu = new Menu();
+        MainMenu menu = new MainMenu();
         menu.Opcoes();
     } 
 }
