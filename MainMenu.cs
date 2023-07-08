@@ -2,141 +2,132 @@ public class MainMenu
 {
     public void Opcoes()
     {
+        ListControl List = new ListControl();    
         bool loop = true;
-
-        ListControl List = new ListControl();
-
-        Console.WriteLine("Listinha de cronogramas deveras fofo");
-        while (loop == true)
+        while(loop == true)
         {
-            Console.WriteLine("================================="); 
-            Console.WriteLine("Me informe o que você deseja fazer");
-            Console.WriteLine("=================================");
-            Console.WriteLine("====== 1-Adicionar horário ======");
-            Console.WriteLine("====== 2-Ver horários      ======");
-            Console.WriteLine("====== 3-Remover horário   ======");
-            Console.WriteLine("====== 4-Atualizar horário ======");
-            Console.WriteLine("====== 5-Sair do programa  ======");
+            Console.WriteLine("Sistema de Cronograma");
+            Console.WriteLine("=========== Menu ===========");
+            Console.WriteLine("======== 1 = Add    ========");
+            Console.WriteLine("======== 2 = Remove ========");
+            Console.WriteLine("======== 3 = Update ========");
+            Console.WriteLine("======== 4 = View   ========");
+            Console.WriteLine("======== 5 = Exit   ========");
+            Console.Write("Sua opção sera: ");
 
-            // Tratamento de erro na conversão da entrada para inteiro
-            int opc;
-            bool inputValid = int.TryParse(Console.ReadLine(), out opc);
-
-            if (!inputValid)
+            if(!int.TryParse(Console.ReadLine(), out int opc))
             {
-                Console.WriteLine("Opção inválida. Tente novamente.");
-                continue; // Retorna ao início do loop
+                Console.WriteLine("valor invalido");
+                continue;
             }
+            int day,hour,minute,index;
+            string info;
+            bool inputTest;
 
             switch(opc)
             {
-                //Add List
+                //Adicionar @@
                 case 1:
-                    int day, hour, minutes;
-                    string informations;
-                    
                     do{
-                        Console.WriteLine("Digite um dia da semana (1 = segunda, 7 = domingo)");
-                        inputValid = int.TryParse(Console.ReadLine(), out day);
-                        
-                        if(!inputValid || day < 1 || day > 7)
-                            Console.WriteLine("Valor invalido");
+                        Console.Write("valor digite um valor entre 1 = segunda e 7 = domingo: ");
+                        if(!int.TryParse(Console.ReadLine(), out day) || day < 1 || day > 8)
+                        {
+                            Console.WriteLine("valor invalido");
+                            
+                        }
+                    }while(day < 1 || day > 8);
 
-                    } while (!inputValid || day < 1 || day > 7);
-                    
                     do{
-                        Console.WriteLine("Digite a hora");
-                        inputValid = int.TryParse(Console.ReadLine(), out hour);
-                        
-                        if(!inputValid || hour < 0 || hour >= 24)
-                            Console.WriteLine("Valor invalido");
+                        Console.Write("Digite as horas: ");
+                        if(!int.TryParse(Console.ReadLine(), out hour) || hour < 1 || hour > 23)
+                        {
+                            Console.WriteLine("valor invalido");
+                        }
+                    }while(hour < 0 || hour > 23);
 
-                    } while (!inputValid || hour < 0 || hour >= 24);
-                    
                     do{
-                        Console.WriteLine("Digite os minutos");
-                        inputValid = int.TryParse(Console.ReadLine(), out minutes);
-
-                        if(!inputValid || minutes <= 0 || minutes >= 60)
-                            Console.WriteLine("Valor invalido");
-
-                    } while (!inputValid || minutes <= 0 || minutes >= 60);
+                        Console.Write("Digite os minutos: ");
+                        if(!int.TryParse(Console.ReadLine(), out minute) || minute < 0 || minute > 59)
+                        {
+                            Console.WriteLine("valor invalido");
+                        }
+                    }while(minute < 0 || minute > 59);
                     
-                    Console.WriteLine("Caso queira, digite alguma descrição sobre o horário");
-                    Console.WriteLine("Caso contrário, pressione Enter");
-                    informations = Console.ReadLine() ?? "";
-                    
-                    List.AddList(day, hour, minutes, informations);
-                    break;  
-                //Veiw List
+                    Console.Write("caso tenha uma informação digite aqui se não so aperte enter: ");
+                    info = Console.ReadLine()??"";
+
+                    List.AddList(day,hour,minute,info);
+                break;
+
+                //Remover@@
                 case 2:
-                    Console.Clear();
-                    List.ViewList();
-                    break;
-                //Remove List
-                case 3:
-                    if(List.NoElementsInList())
-                    {
-                        Console.WriteLine("Sua lista não possui horários");
-                        continue; // Retorna ao início do loop
-                    }
-                    Console.WriteLine("Informe o horário que deseja remover de acordo com o índice");
-                    inputValid = int.TryParse(Console.ReadLine(), out int index);
-                    if (!inputValid || List.IndexError(index))
-                    {
-                        Console.WriteLine("Índice inválido. Tente novamente.");
-                        continue; // Retorna ao início do loop
-                    }
+                    List.ListIsNull();
+                    Console.WriteLine("Selecioner o indice do horario que deseja remover");
+                    do{
+                        inputTest = int.TryParse(Console.ReadLine(),out index);
+                        if(!inputTest|| List.IndexError(index))
+                            Console.WriteLine("valor invalido");
+                    }while(!inputTest || List.IndexError(index));
                     List.RemoveList(index);
-                    break;
-                //Update List
-                case 4:
-                    if(List.NoElementsInList())
-                    {
-                        Console.WriteLine("Sua lista não possui horários");
-                        continue; // Retorna ao início do loop
-                    }
+                break;
 
-                    Console.WriteLine("Informe o horário que deseja atualizar de acordo com o índice");
-                    inputValid = int.TryParse(Console.ReadLine(), out int updateIndex);
-                    if (!inputValid || List.IndexError(updateIndex))
-                    {
-                        Console.WriteLine("Índice inválido. Tente novamente.");
-                        continue; // Retorna ao início do loop
-                    }
+                //Atualizar@@
+                case 3:
+                    List.ListIsNull();
+                    Console.WriteLine("Selecioner o indice do horario que deseja remover");
+                    do{
+                        inputTest = int.TryParse(Console.ReadLine(),out index);
+                        if(!inputTest|| List.IndexError(index))
+                            Console.WriteLine("valor invalido");
+                    }while(!inputTest || List.IndexError(index));
+
+                    do{
+                        Console.Write("valor digite um valor entre 1 = segunda e 7 = domingo: ");
+                        if(!int.TryParse(Console.ReadLine(), out day) || day < 1 || day > 8)
+                        {
+                            Console.WriteLine("valor invalido");
+                            
+                        }
+                    }while(day < 1 || day > 8);
+
+                    do{
+                        Console.Write("Digite as horas: ");
+                        if(!int.TryParse(Console.ReadLine(), out hour) || hour < 1 || hour > 23)
+                        {
+                            Console.WriteLine("valor invalido");
+                        }
+                    }while(hour < 0 || hour > 23);
+
+                    do{
+                        Console.Write("Digite os minutos: ");
+                        if(!int.TryParse(Console.ReadLine(), out minute) || minute < 0 || minute > 59)
+                        {
+                            Console.WriteLine("valor invalido");
+                        }
+                    }while(minute < 0 || minute > 59);
                     
-                    int newDay, newHour, newMinutes;
-                    string newInfo; 
+                    Console.Write("caso tenha uma informação digite aqui se não so aperte enter: ");
+                    info = Console.ReadLine()??"";
 
-                    do{
-                        Console.WriteLine("Digite o novo dia (1 = segunda, 7 = domingo)");
-                        inputValid = int.TryParse(Console.ReadLine(), out newDay);
-                    } while (!inputValid || newDay <= 1 || newDay > 8);
+                    List.UpdateList(index,day,hour,minute,info);
 
-                    do{
-                        Console.WriteLine("Digite a nova hora");
-                        inputValid = int.TryParse(Console.ReadLine(), out newHour);
-                    } while (!inputValid || newHour < 0 || newHour > 23);
+                break;
 
-                    do{
-                        Console.WriteLine("Digite os novos minutos");
-                        inputValid = int.TryParse(Console.ReadLine(), out newMinutes);
-                    } while (!inputValid || newMinutes < 0 || newMinutes > 59);
+                //Vizualizar@@
+                case 4:
+                    if(List.ListIsNull())
+                    {
+                        Console.WriteLine("Sua lista não possui conteudo");
+                        continue;
+                    }
+                    List.ViewList();
+                break;
 
-                    Console.WriteLine("Digite uma nova informação");
-                    Console.WriteLine("Caso contrário, pressione Enter");
-                    newInfo = Console.ReadLine() ?? "";
-
-                    List.UpdateList(updateIndex, newDay, newHour, newMinutes, newInfo);
-                    break;
-                //Exit
+                //Sair @@
                 case 5:
+                    Console.WriteLine("ate mais então");
                     loop = false;
-                    break;
-
-                default:
-                    Console.WriteLine("Opção inválida. Tente novamente.");
-                    break;
+                break;
             }
         }
     }
