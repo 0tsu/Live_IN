@@ -1,4 +1,3 @@
-from datetime import datetime
 import locale
 import SystemDate as SD
 

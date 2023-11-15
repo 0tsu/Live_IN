@@ -1,12 +1,12 @@
 from datetime import datetime
 import locale
 
-locale.setlocale(locale.LC_TIME, "pt_BR.utf-8")
+#locale.setlocale(locale.LC_TIME, "pt_BR.utf-8")
 
 timeLine = []
 def Add(day:int, hours:int, minutes:int, info:str):
     date = datetime(1, 1, day, hours, minutes, 0)
-    dateText = date.strftime("%a - %H:%M")
+    dateText = date.strftime("%A - %H:%M")
     timeLine.append({"date":dateText, "info" : info})
     timeLine.sort(key=lambda x: x["date"])
     
